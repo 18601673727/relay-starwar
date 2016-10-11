@@ -3,14 +3,15 @@ import Relay from 'react-relay';
 
 class App extends React.Component {
   render() {
+    const { id, title } = this.props.film;
+
     return (
       <div>
-        <h1>Widget list</h1>
-        <ul>
-          {this.props.viewer.widgets.edges.map(edge =>
-            <li key={edge.node.id}>{edge.node.name} (ID: {edge.node.id})</li>
-          )}
-        </ul>
+        <h1>{id} - {title}</h1>
+        {/*<h1>Film list</h1>*/}
+        {/*<ul>{ this.props.films.map(*/}
+          {/*film => <li key={film.id}>{film.title} (ID: {film.id})</li>*/}
+        {/*)}</ul>*/}
       </div>
     );
   }
@@ -18,16 +19,10 @@ class App extends React.Component {
 
 export default Relay.createContainer(App, {
   fragments: {
-    viewer: () => Relay.QL`
-      fragment on User {
-        widgets(first: 10) {
-          edges {
-            node {
-              id,
-              name,
-            },
-          },
-        },
+    film: () => Relay.QL`
+      fragment on Film {
+        id
+        title
       }
     `,
   },
