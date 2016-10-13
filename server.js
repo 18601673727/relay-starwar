@@ -29,8 +29,16 @@ function startAppServer(callback) {
     output: {filename: '/app.js', path: '/', publicPath: '/js/'}
   });
   appServer = new WebpackDevServer(compiler, {
+    proxy: {
+      '/graphql/*': {
+        target: 'http://graphql-swapi.parseapp.com/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/graphql': ''
+        }
+      }
+    },
     contentBase: '/public/',
-    proxy: {'/graphql': `http://localhost:${GRAPHQL_PORT}`},
     publicPath: '/js/',
     stats: {colors: true}
   });
@@ -83,7 +91,7 @@ function startServers(callback) {
         callback();
       }
     }
-    startGraphQLServer(handleTaskDone);
+    // startGraphQLServer(handleTaskDone);
     startAppServer(handleTaskDone);
   });
 }

@@ -6,6 +6,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
 
+// Relay.injectNetworkLayer(
+//   new Relay.DefaultNetworkLayer('http://graphql-swapi.parseapp.com/')
+// );
+
 ReactDOM.render(
   <Relay.Renderer
     environment={Relay.Store}
