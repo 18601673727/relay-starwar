@@ -23,7 +23,11 @@ function startAppServer(callback) {
           exclude: /node_modules/,
           loader: 'babel',
           test: /\.js$/,
-        }
+        },
+        {
+          loader: 'style-loader!css-loader',
+          test: /\.css$/,
+        },
       ]
     },
     output: {filename: '/app.js', path: '/', publicPath: '/js/'}
@@ -38,6 +42,7 @@ function startAppServer(callback) {
         }
       }
     },
+    noInfo: true,
     contentBase: '/public/',
     publicPath: '/js/',
     stats: {colors: true}
