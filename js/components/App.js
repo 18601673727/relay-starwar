@@ -94,7 +94,7 @@ class App extends React.Component {
           </Item>
         </Flex>
         <div style={styles.footer}>
-          Star this on <a style={styles.anchor} href="https://github.com/18601673727/relay-starwar">Github</a>!
+          <p>Data from <a style={styles.anchor} href="https://github.com/phalt/swapi">swapi</a>, star this on <a style={styles.anchor} href="https://github.com/18601673727/relay-starwar">Github</a>!</p>
         </div>
       </Flex>
     );
