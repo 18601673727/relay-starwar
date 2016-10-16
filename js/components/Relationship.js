@@ -15,65 +15,15 @@ class Relationship extends React.Component {
 }
 
 export default Relay.createContainer(Relationship, {
-    initialVariables: {
-      leftId: "cGVvcGxlOjE=",
-      rightId: "cGVvcGxlOjE=",
-    },
     fragments: {
-        leftComparison: () => Relay.QL`
-            fragment on Root {
-                person(id: $leftId) {
-                    filmConnection(first: 100) {
-                      edges {
-                        node {
-                          id
-                        }
-                      }
-                    }
-                    starshipConnection(first: 100) {
-                      edges {
-                        node {
-                          id
-                        }
-                      }
-                    }
-                    vehicleConnection(first: 100) {
-                        edges {
-                            node {
-                                id
-                            }
-                        }
-                    }
+        allComparisons: ((Component) => {
+            return Relay.QL`
+                fragment on Root {
+                    ${Component.getFragment('leftComparison')}
+                    ${Component.getFragment('rightComparison')}
                 }
-            }
-        `,
-        rightComparison: () => Relay.QL`
-            fragment on Root {
-                person(id: $rightId) {
-                    filmConnection(first: 100) {
-                      edges {
-                        node {
-                          id
-                        }
-                      }
-                    }
-                    starshipConnection(first: 100) {
-                      edges {
-                        node {
-                          id
-                        }
-                      }
-                    }
-                    vehicleConnection(first: 100) {
-                        edges {
-                            node {
-                                id
-                            }
-                        }
-                    }
-                }
-            }
-        `,
+            `
+        }),
     }
 })
 
