@@ -102,10 +102,6 @@ class App extends React.Component {
 }
 
 export default Relay.createContainer(App, {
-    initialVariables: {
-      leftId: "cGVvcGxlOjE=",
-      rightId: "cGVvcGxlOjE=",
-    },
     fragments: {
         allPeople: () => Relay.QL`
             fragment on PeopleConnection {
@@ -158,60 +154,6 @@ export default Relay.createContainer(App, {
                 starships {
                     id
                     name
-                }
-            }
-        `,
-        leftComparison: () => Relay.QL`
-            fragment on Root {
-                person(id: $leftId) {
-                    filmConnection(first: 100) {
-                        edges {
-                            node {
-                                id
-                            }
-                        }
-                    }
-                    starshipConnection(first: 100) {
-                        edges {
-                            node {
-                                id
-                            }
-                        }
-                    }
-                    vehicleConnection(first: 100) {
-                        edges {
-                            node {
-                                id
-                            }
-                        }
-                    }
-                }
-            }
-        `,
-        rightComparison: () => Relay.QL`
-            fragment on Root {
-                person(id: $rightId) {
-                    filmConnection(first: 100) {
-                        edges {
-                            node {
-                                id
-                            }
-                        }
-                    }
-                    starshipConnection(first: 100) {
-                        edges {
-                            node {
-                                id
-                            }
-                        }
-                    }
-                    vehicleConnection(first: 100) {
-                        edges {
-                            node {
-                                id
-                            }
-                        }
-                    }
                 }
             }
         `,

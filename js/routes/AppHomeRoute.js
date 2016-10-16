@@ -45,27 +45,5 @@ export default class extends Relay.Route {
           }
       `
     }),
-    // leftComparison: ((Component) => {
-    //   return Relay.QL`
-    //       query {
-    //           person(id: $leftId) { ${Component.getFragment('comparisonFields')} }
-    //       }
-    //   `
-    // }),
-    // rightComparison: ((Component) => {
-    //   return Relay.QL`
-    //       query {
-    //           person(id: $rightId) { ${Component.getFragment('comparisonFields')} }
-    //       }
-    //   `
-    // }),
-    // allComparisons: ((Component) => {
-    //   return Relay.QL`
-    //       query {
-    //           person(id: $leftId) { ${Component.getFragment('leftComparison')} }
-    //           person(id: $rightId) { ${Component.getFragment('rightComparison')} }
-    //       }
-    //   `
-    // }),
   };
 }

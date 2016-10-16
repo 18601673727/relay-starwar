@@ -1,5 +1,7 @@
 import React from 'react';
+import Relay from 'react-relay';
 import Relationship from './Relationship';
+import RelationshipRoute from '../routes/RelationshipRoute';
 
 export default class RelationshipList extends React.Component {
   render() {
@@ -23,9 +25,12 @@ export default class RelationshipList extends React.Component {
 
     if (this.props.checkedPersons.length === 2) {
       report = (
-        <Relationship
-          leftId={this.props.data[this.props.checkedPersons[0]].id}
-          rightId={this.props.data[this.props.checkedPersons[1]].id}/>
+        <Relay.RootContainer
+          Component={Relationship}
+          route={new RelationshipRoute({
+            leftId: this.props.data[this.props.checkedPersons[0]].id,
+            rightId: this.props.data[this.props.checkedPersons[1]].id,
+          })}/>
       );
     }
 

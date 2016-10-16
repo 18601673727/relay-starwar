@@ -21,6 +21,7 @@
     "express-graphql": "0.5.4",
     "graphql": "0.7.0",
     "graphql-relay": "0.4.3",
+    "lodash": "^4.16.4",
     "node-fetch": "^1.6.3",
     "normalize.css": "^5.0.0",
     "react": "^15.3.1",
