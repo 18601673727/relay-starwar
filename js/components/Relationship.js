@@ -33,7 +33,9 @@ class Relationship extends React.Component {
     filmConnections.push(<p key={0}>And they both could been seen in these <strong>films</strong>:</p>);
 
     leftFilms.forEach((film, key) => {
-      _.indexOf(film)(rightFilms) && filmConnections.push(<h5 key={++key}>{film.title}</h5>);
+      if (typeof _.find({'id': film.id})(rightFilms) !== 'undefined') {
+        filmConnections.push(<h5 key={++key}>{film.title}</h5>);
+      }
     });
 
     // Compare starship connections
@@ -41,10 +43,12 @@ class Relationship extends React.Component {
     const leftStarships = leftComparison.starshipConnection.edges.map(starship => starship.node);
     const rightStarships = rightComparison.starshipConnection.edges.map(starship => starship.node);
 
-    starshipConnections.push(<p key={0}>And they've onboarded with these <strong>starships</strong> together:</p>);
+    starshipConnections.push(<p key={0}>And they{String.fromCharCode(39)}ve onboarded with these <strong>starships</strong> together:</p>);
 
     leftStarships.forEach((starship, key) => {
-      _.indexOf(starship)(rightStarships) && starshipConnections.push(<h5 key={++key}>{starship.name}</h5>);
+      if (typeof _.find({'id': starship.id})(rightStarships) !== 'undefined') {
+        starshipConnections.push(<h5 key={++key}>{starship.name}</h5>);
+      }
     });
 
     return (<div>

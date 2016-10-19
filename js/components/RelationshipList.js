@@ -10,7 +10,7 @@ export default class RelationshipList extends React.Component {
 
     if (this.props.checkedPersons.length > 0 && this.props.checkedPersons.length < 3) {
       message = (
-        <div>You've selected: {
+        <div>You{String.fromCharCode(39)}ve selected: {
           this.props.checkedPersons.map((checkedKey, key) => {
             return (
               <span key={key}>
